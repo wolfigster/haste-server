@@ -29,7 +29,7 @@ const {
   RATE_LIMITS_BLACKLIST_EVERY_MILLISECONDS,
   RATE_LIMITS_BLACKLIST,
   DOCUMENTS,
-} = process.env;
+} = process.env
 
 const config = {
   host: HOST,
@@ -57,24 +57,22 @@ const config = {
   },
 
   rateLimits: {
-    whitelist: RATE_LIMITS_WHITELIST ? RATE_LIMITS_WHITELIST.split(",") : [],
-    blacklist: RATE_LIMITS_BLACKLIST ? RATE_LIMITS_BLACKLIST.split(",") : [],
+    whitelist: RATE_LIMITS_WHITELIST ? RATE_LIMITS_WHITELIST.split(',') : [],
+    blacklist: RATE_LIMITS_BLACKLIST ? RATE_LIMITS_BLACKLIST.split(',') : [],
     categories: {
       normal: {
         totalRequests: RATE_LIMITS_NORMAL_TOTAL_REQUESTS,
         every: RATE_LIMITS_NORMAL_EVERY_MILLISECONDS,
       },
       whitelist:
-        RATE_LIMITS_WHITELIST_EVERY_MILLISECONDS ||
-        RATE_LIMITS_WHITELIST_TOTAL_REQUESTS
+        RATE_LIMITS_WHITELIST_EVERY_MILLISECONDS || RATE_LIMITS_WHITELIST_TOTAL_REQUESTS
           ? {
               totalRequests: RATE_LIMITS_WHITELIST_TOTAL_REQUESTS,
               every: RATE_LIMITS_WHITELIST_EVERY_MILLISECONDS,
             }
           : null,
       blacklist:
-        RATE_LIMITS_BLACKLIST_EVERY_MILLISECONDS ||
-        RATE_LIMITS_BLACKLIST_TOTAL_REQUESTS
+        RATE_LIMITS_BLACKLIST_EVERY_MILLISECONDS || RATE_LIMITS_BLACKLIST_TOTAL_REQUESTS
           ? {
               totalRequests: RATE_LIMITS_WHITELIST_TOTAL_REQUESTS,
               every: RATE_LIMITS_BLACKLIST_EVERY_MILLISECONDS,
@@ -98,11 +96,11 @@ const config = {
   },
 
   documents: DOCUMENTS
-    ? DOCUMENTS.split(",").reduce((acc, item) => {
-        const keyAndValueArray = item.replace(/\s/g, "").split("=");
-        return { ...acc, [keyAndValueArray[0]]: keyAndValueArray[1] };
+    ? DOCUMENTS.split(',').reduce((acc, item) => {
+        const keyAndValueArray = item.replace(/\s/g, '').split('=')
+        return { ...acc, [keyAndValueArray[0]]: keyAndValueArray[1] }
       }, {})
     : null,
-};
+}
 
-console.log(JSON.stringify(config));
+console.log(JSON.stringify(config))
