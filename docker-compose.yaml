@@ -1,6 +1,7 @@
 version: '3.0'
 services:
   haste-server:
+    container_name: haste-server
     build: .
     environment:
       - STORAGE_TYPE=file
