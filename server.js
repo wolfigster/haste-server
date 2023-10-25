@@ -54,7 +54,7 @@ if (process.env.REDISTOGO_URL && config.storage.type === 'redis') {
 }
 
 // Compress the static javascript assets
-if (config.recompressStaticAssets) {
+if (config.recompressStaticAssets === 'true' || config.recompressStaticAssets === true) {
   var list = fs.readdirSync('./static')
   for (var j = 0; j < list.length; j++) {
     var item = list[j]
